@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration xmlns:xi="http://www.w3.org/2001/XInclude" packages="com.mk.logger,org.apache.logging.log4j.core.appender" status="DEBUG">
+    <Properties>
+        <Property name="filename">/Users/mlln/OCI/logs/diagnostic-spark.log</Property>
+    </Properties>
+
+    <Appenders>
+        <DataflowDefaultLogAppender name="DataflowDefaultLogAppender"/>
+        <DataFlowCustomLogFileAppender name="DataFlowCustomLogFileAppender"
+                                       fileName="${filename}"
+                                       filePattern="/Users/mlln/OCI/logs/diagnostic-spark-${sd:type}.%i.log.gz"
+                                       immediateFlush="true"
+                                       append="false">
+            <PatternLayout pattern="%d{ISO8601} %t %p %c{1}: %m%n"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="1MB" />
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </DataFlowCustomLogFileAppender>
+    </Appenders>
+    <Loggers>
+        <Root level="debug" additivity="false">
+            <AppenderRef ref="DataflowDefaultLogAppender" />
+            <AppenderRef ref="DataFlowCustomLogFileAppender" />
+        </Root>
+    </Loggers>
+    <!--
+            <Logger name="DataFlowCustomLogFileAppender">
+            <AppenderRef ref="DataFlowCustomLogFileAppender" />
+        </Logger>
+
+            <DataflowDefaultLogAppender name="DataflowDefaultLogAppender"/>
+            <Root level="DEBUG">
+            <AppenderRef ref="DataflowDefaultLogAppender" />
+        </Root>
+
+                <Logger name="DataFlowCustomLogFileAppender" level="debug" additivity="false">
+            <AppenderRef ref="DataFlowCustomLogFileAppender" />
+        </Logger>
+    -->
+
+</Configuration>

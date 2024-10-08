@@ -1,0 +1,3 @@
+### Things which makes your life easy and jump start your rocket ship.
+* read/write AWS S3 Object storage from OCI Data Flow Spark application [AWS_connection.md](https://github.com/lnmohankumar/oci-dataflow/blob/main/docs/howto/AWS_connection.md)
+* Python dependency package archive file creation [python_dependency_packager](https://github.com/lnmohankumar/oci-dataflow/blob/main/docs/howto/python_dependency_packager.md)
